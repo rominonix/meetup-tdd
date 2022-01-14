@@ -1,0 +1,11 @@
+.hero {
+    width: 100vw;
+    display: flex;
+    height: 60vh;
+    padding-bottom: 2%;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(214, 186, 240);
+    /* background-image: url('meetup-background.jpg'); */
+}

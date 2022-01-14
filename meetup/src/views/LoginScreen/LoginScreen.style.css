@@ -1,0 +1,10 @@
+.login-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 18% 20%; */
+    /* width: 50%; */
+    height: 100vh;
+    background-color: blueviolet;
+}

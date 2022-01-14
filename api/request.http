@@ -1,0 +1,35 @@
+// User endpoint
+
+GET http://localhost:4000/api/users
+###
+
+GET http://localhost:4000/api/users/6a12f8cd-9cf4-4afc-b193-598841a3e508
+###
+
+POST http://localhost:4000/api/users
+
+###
+DELETE http://localhost:4000/api/users/6a12f8cd-9cf4-4afc-b193-598841a3e508
+
+// Event endpoint
+
+###
+GET http://localhost:4000/api/event
+
+###
+GET http://localhost:4000/api/event/177a8fbb-64e4-48fe-a1a4-8fc0c7f6a38f
+
+###
+DELETE http://localhost:4000/api/event/6c4b10e7-937d-4050-9bee-9fd99f8493a9
+
+// Comment endpoint
+
+### 
+GET http://localhost:4000/api/comment
+
+###
+GET http://localhost:4000/api/comment/59575b77-8649-42d8-b1d4-31944be8a249
+
+###
+
+DELETE http://localhost:4000/api/comment/59575b77-8649-42d8-b1d4-31944be8a249

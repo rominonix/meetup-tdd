@@ -1,0 +1,6 @@
+.single-event {
+    width: 80vw;
+    display: grid;
+    grid-template-columns: 55vw 25vw;
+    background-color: darkcyan;
+}

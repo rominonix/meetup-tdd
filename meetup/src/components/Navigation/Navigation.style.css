@@ -1,0 +1,29 @@
+.link{
+  text-decoration: none;
+  color: #252525;
+}
+
+.navigation {
+    height: 4em;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    background-color: whitesmoke;
+  }
+  
+  nav {
+    position: absolute;
+    right: 5%;
+    min-width: 8em;
+    justify-content: center;
+    /* display: flex; */
+  }
+  
+  ul {
+    display: flex;
+    gap: 15%;
+  }
+  
+  li {
+    list-style: none;
+  }
