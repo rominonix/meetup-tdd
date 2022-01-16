@@ -17,23 +17,6 @@ const Navigation = () => {
     changeMenu();
   }, [menu]);
 
-  useEffect(() => {
-    window.addEventListener("storage", () => {
-      // When local storage changes, dump the list to
-      // the console.
-      console.log("RUNNING WHEN localstorgaet updates");
-      // if (localStorage.getItem("email") !== null) {
-      //   console.log(`user login`);
-      //   setMenu(false);
-      // } else {
-      //   setMenu(true);
-
-      //   console.log(`user not found`);
-      // }
-      // console.log("nnn");
-    });
-  }, [menu]);
-
   return (
     <div>
       <div className="navigation">

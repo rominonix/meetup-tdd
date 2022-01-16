@@ -40,7 +40,7 @@ const SearchEvent = () => {
   }, []);
 
   useEffect(() => {
-    console.log("This is events filter", searchEvents);
+    // console.log("This is events filter", searchEvents);
   }, [searchEvents]);
 
   return (

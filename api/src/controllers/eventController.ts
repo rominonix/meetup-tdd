@@ -49,6 +49,8 @@ export const getAllEvent: RequestHandler = async (req, res) => {
 export const getEventById: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log("eventid", id);
+    
     const event = await Event.findOne({
       attributes: { exclude: ["createdAt", "updatedAt"] },
       where: {

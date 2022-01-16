@@ -39,13 +39,20 @@ export const putEventAttend = async (email:string, currentId:string) => {
     return [];
   }
 };
-// export const getEvents = async () => {
-//   return await axios.get("http://localhost:4000/api/event");
-// };
+
 
 export const getEvents = async () => {
   try {
     const response = await axios.get("http://localhost:4000/api/event");
+    return await response.data;
+  } catch (error) {
+    return [];
+  }
+};
+
+export const getEventById = async (id: string) => {
+  try {
+    const response = await axios.get(`http://localhost:4000/api/event/${id}`, {params: {id: id}});
     return await response.data;
   } catch (error) {
     return [];
@@ -72,15 +79,11 @@ export const getSearch = async (
   }
 };
 
-export const getProfile = async (email:string) => {
-  console.log('ajajja');
-  
+export const getProfile = async (email:string) => { 
   try {
     const response = await axios.get(
       `http://localhost:4000/api/users/${email}`, {params: {email: email}}
-    );
-    console.log("holi from index", response);
-    
+    );  
     return response.data;
   } catch (error) {
     return [];
