@@ -13,8 +13,8 @@ interface UserAttributes {
   name: string;
   email: string;
   password: string;
-  eventAttend: string[] | null;
-  eventAttended: string[] | null;
+  eventAttend: string[] ;
+  eventAttended: string[] ;
 }
 
 export interface UserCreationAttributes
@@ -28,8 +28,8 @@ class User
   public name!: string;
   public email!: string;
   public password!: string;
-  public eventAttend!: string[] | null;
-  public eventAttended!: string[] | null;
+  public eventAttend!: string[] ;
+  public eventAttended!: string[] ;
 
   // timestamps!
   public readonly createdAt!: Date;

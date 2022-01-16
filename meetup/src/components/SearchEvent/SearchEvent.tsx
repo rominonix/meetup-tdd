@@ -11,7 +11,7 @@ interface Event {
   time: string;
   location?: { street: string; city: string };
   reviews: number[];
-  digitalEvent: boolean;
+  digitalEvent: string;
   availableSeats: number;
   UserId: string;
   eventImg: string;
@@ -32,9 +32,7 @@ const SearchEvent = () => {
       dateEntered,
       onlineEntered
     );
-    console.log("Holi", res);
     setSearchEvents(res);
-    // setShowEventList(true);
   };
 
   useEffect(() => {
@@ -84,11 +82,6 @@ const SearchEvent = () => {
           <option value="0">In person</option>
         </select>
       </form>
-
-      {/* <button type="button" onClick={loadSearchEvent}>
-        Search Events
-      </button> */}
-
       <button
         type="button"
         onClick={() => {
@@ -104,12 +97,12 @@ const SearchEvent = () => {
           showEventList && (
             <EventList
               key={event.id}
+              id={event.id}
               title={event.title}
               description={event.description}
               date={event.date}
               time={event.time}
               eventImg={event.eventImg}
-              // online={event.digitalEvent}
             />
           )
         );

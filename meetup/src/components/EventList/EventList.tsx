@@ -1,47 +1,60 @@
 import "./EventList.style.css";
-// import { useEffect, useState } from "react";
-// import * as apiService from "../../api/index";
-// import SearchEvent from "../SearchEvent/SearchEvent";
-// import { useSelector } from "react-redux";
-// import { getEventSelector } from "../../store/slice/event.slice";
-// import { useAppSelector, useAppDispatch } from '../../store/store.hooks'
-// import { getEvents } from '../../api/index';
-
-interface Event {
+import * as apiService from "../../api/index";
+import { useEffect, useState } from "react";
+interface SearchProp {
   id: string;
   title: string;
   description: string;
   date: Date;
   time: string;
   location?: { street: string; city: string };
-  reviews: number[];
-  digitalEvent: boolean;
-  availableSeats: number;
-  UserId: string;
   eventImg: string;
 }
-
-interface SearchProp {
-  title: string;
-  description: string;
-
-  date: Date;
-  time: string;
-  location?: { street: string; city: string };
-  // reviews?: number[];
-  // digitalEvent: boolean;
-  // availableSeats: number;
-  // UserId?: string;
-  eventImg: string;
-}
-
+// interface User {
+//   eventAttend: string;
+// }
 const EventList = ({
+  id,
   title,
   description,
   date,
   time,
   eventImg,
 }: SearchProp) => {
+  const [eventAttend, setEventAttend] = useState("");
+  const [showButton, setShowButton] = useState(false);
+
+  // const show = () => {
+  //   if (localStorage.getItem("email") !== null) {
+  //     setShowButton(true);
+  //   }
+
+  // }
+
+
+  const currentEvent = async () => {
+    let currentId = id;
+    // console.log("soy current ID",currentId);
+    if (localStorage.getItem("email") !== null) {
+      let email: any = localStorage.getItem("email");
+      console.log(`Email address exists`);
+      const res = await apiService.putEventAttend(email, currentId);
+      // console.log('soy res', res);
+      setEventAttend(res);
+      setShowButton(true)
+    } else {
+      console.log(`Email address not found`);
+    }
+  };
+
+  useEffect(() => {
+    currentEvent();
+  }, []);
+
+  useEffect(() => {
+    console.log("event", eventAttend);
+  }, [eventAttend]);
+
   return (
     <div className="event-list">
       <div className="img-thumbnail">
@@ -50,10 +63,12 @@ const EventList = ({
       <div className="details">
         <div className="date-time">
           <p> 📅 {date}</p>
-          <p> ⌚ {time}</p>
+          <p> 🕣 {time}</p>
         </div>
         <h3>{title}</h3>
         <p className="description">{description}</p>
+
+        {showButton && <button onClick={currentEvent}>attend</button>}
       </div>
     </div>
   );

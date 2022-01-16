@@ -1,4 +1,3 @@
-// const { InvalidBody, userNotFound ,userIsExist} = require('../errors/index')
 import User from "../models/user";
 import { RequestHandler } from "express";
 import { v4 as uuidv4 } from "uuid";
@@ -25,21 +24,23 @@ export const createUser: RequestHandler = async (req, res) => {
 
 export const getAllUser: RequestHandler = async (req, res) => {
   try {
-    const users = await User.findAll({ attributes: ["name", "email"] });
+    const users = await User.findAll({ attributes: {exclude: ["createdAt", "updatedAt"] } });
     res.json(users);
   } catch (error) {
     res.json(error);
   }
 };
 
-export const getUserById: RequestHandler = async (req, res) => {
+export const getUserByEmail: RequestHandler = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { email } = req.params;
+    console.log("back-email", email);
+    
     const user = await User.findOne({
       attributes: { exclude: ["createdAt", "updatedAt"] },
       where: {
-        id: {
-          [Op.eq]: id,
+        email: {
+          [Op.eq]: email,
         },
       },
     });
@@ -52,6 +53,28 @@ export const getUserById: RequestHandler = async (req, res) => {
     console.log(error);
   }
 };
+
+
+// export const getUserById: RequestHandler = async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const user = await User.findOne({
+//       attributes: { exclude: ["createdAt", "updatedAt"] },
+//       where: {
+//         id: {
+//           [Op.eq]: id,
+//         },
+//       },
+//     });
+
+//     //   if (!id || !isValidUuid(id)) {
+//     //     throw new Error("This id are not valid");
+//     //   }
+//     res.json({ user });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 
 export const updateUser: RequestHandler = async (req, res) => {
@@ -71,6 +94,34 @@ export const deleteUser: RequestHandler = async (req, res) => {
     const user = await User.findOne({ where: { id: req.params.id } });
     await user?.destroy();
     res.json({ message: "user has deleted" });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+export const loginUser: RequestHandler = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ where: { email: email, password: password } });
+
+    if(!user){throw new Error('User not found')}
+    // await User.update({name, email, password},{where:{id: req.params.id}});
+    res.json({ user });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+
+export const updateEventAttend: RequestHandler = async (req, res) => {
+  try {
+    console.log("Holiiii")
+    const { email, eventAttend } = req.body;
+    const event = await User.findOne({ where: {email: email} });
+    console.log(event?.eventAttend)
+    event?.eventAttend.push(eventAttend)
+    await User.update({ eventAttend: event?.eventAttend},{where:{email:email}});
+    res.json({ message: "update" });
   } catch (error) {
     res.json(error);
   }

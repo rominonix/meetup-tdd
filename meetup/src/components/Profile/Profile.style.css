@@ -1,4 +1,16 @@
 .profile {
-    background-color: darkgreen;
-    width: 80vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(176, 211, 176);
+    width: 100%;
+    height: 100vh;
 }
+
+.event-attend {
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    gap: 15%;
+}
+
