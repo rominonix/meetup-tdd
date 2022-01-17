@@ -24,22 +24,12 @@ const EventList = ({
   const [eventAttend, setEventAttend] = useState("");
   const [showButton, setShowButton] = useState(false);
 
-  // const show = () => {
-  //   if (localStorage.getItem("email") !== null) {
-  //     setShowButton(true);
-  //   }
-
-  // }
-
-
   const currentEvent = async () => {
     let currentId = id;
-    // console.log("soy current ID",currentId);
     if (localStorage.getItem("email") !== null) {
       let email: any = localStorage.getItem("email");
       console.log(`Email address exists`);
       const res = await apiService.putEventAttend(email, currentId);
-      // console.log('soy res', res);
       setEventAttend(res);
       setShowButton(true)
     } else {

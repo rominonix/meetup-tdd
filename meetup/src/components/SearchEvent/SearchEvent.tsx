@@ -39,14 +39,13 @@ const SearchEvent = () => {
     loadSearchEvent();
   }, []);
 
-  useEffect(() => {
-    // console.log("This is events filter", searchEvents);
-  }, [searchEvents]);
+  useEffect(() => {}, [searchEvents]);
 
   return (
     <div className="search-event">
       <form action="" className="search-form">
         <input
+          className="input-search"
           type="text"
           id="title"
           name="title"
@@ -55,6 +54,7 @@ const SearchEvent = () => {
           placeholder='Search "English"'
         />
         <input
+          className="input-search"
           type="text"
           id="location"
           name="location"
@@ -64,6 +64,7 @@ const SearchEvent = () => {
         />
 
         <input
+          className="input-search"
           type="date"
           id="date"
           name="date"
@@ -73,38 +74,38 @@ const SearchEvent = () => {
           onChange={(e) => setDateEntered(e.target.value)}
         />
         <select
+          className="input-search"
           name="online"
           id=""
           onChange={(e) => setOnlineEntered(e.target.value)}
         >
-          <option value="2">any type</option>
+          <option value="2">Any type</option>
           <option value="1">Digital event</option>
           <option value="0">In person</option>
         </select>
+        <button
+          className="search-button"
+          type="button"
+          onClick={() => {
+            loadSearchEvent();
+            setShowEventList(true);
+          }}
+        >
+          Search Events
+        </button>
       </form>
-      <button
-        type="button"
-        onClick={() => {
-          loadSearchEvent();
-          setShowEventList(true);
-        }}
-      >
-        Search Events
-      </button>
 
       {searchEvents.map((event) => {
         return (
-          showEventList && (
-            <EventList
-              key={event.id}
-              id={event.id}
-              title={event.title}
-              description={event.description}
-              date={event.date}
-              time={event.time}
-              eventImg={event.eventImg}
-            />
-          )
+          <EventList
+            key={event.id}
+            id={event.id}
+            title={event.title}
+            description={event.description}
+            date={event.date}
+            time={event.time}
+            eventImg={event.eventImg}
+          />
         );
       })}
     </div>
