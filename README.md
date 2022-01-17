@@ -19,5 +19,5 @@
 ## Use Case Diagram
 [UML Diagram](https://lucid.app/lucidchart/2462731b-144b-48e7-95d9-53040c92af52/edit?invitationId=inv_c316cc78-7a3a-48cb-8ebd-68cb20c6d969)
 
-![Diagram](meetup/assets/diagram.jpeg)
+![Diagram](meetup/src/assets/diagram.jpeg)
 
