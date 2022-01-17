@@ -45,16 +45,19 @@ const Login = () => {
   return (
     <div className="login">
       <input
+        className="input-login"
         type="text"
-        placeholder="email"
+        placeholder="Email"
         onChange={(e) => setEmailEntered(e.target.value)}
       />
       <input
+      className="input-login"
         type="text"
-        placeholder="password"
+        placeholder="Password"
         onChange={(e) => setPasswordEntered(e.target.value)}
       />
       <button
+        className="login-button"
         type="button"
         onClick={() => {
           loadLogin();

@@ -1,7 +1,7 @@
 .hero {
     width: 100vw;
     display: flex;
-    height: 60vh;
+    height: 50vh;
     padding-bottom: 2%;
     justify-content: end;
     align-items: center;
