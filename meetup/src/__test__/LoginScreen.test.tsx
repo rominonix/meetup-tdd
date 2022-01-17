@@ -8,6 +8,14 @@ import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 Enzyme.configure({ adapter: new Adapter() });
 configure({ adapter: new Adapter() });
 
+
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 describe("LOGIN SCREEN - Tester for LoginScreen Component", () => {
   test("LOGIN SCREEN - Test if LoginScreen Component render without errors", () => {
     render(<LoginScreen />);

@@ -7,6 +7,13 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 Enzyme.configure({ adapter: new Adapter() });
 configure({ adapter: new Adapter() })
 
+const mockedUsedNavigate = jest.fn();
+
+jest.mock('react-router-dom', () => ({
+   ...jest.requireActual('react-router-dom') as any,
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 describe("LOGIN - Tester for Login Component", () => {
   test("LOGIN - Test if Login Component render without errors", () => {
     render(<Login />);
@@ -25,5 +32,10 @@ describe("LOGIN - Tester for Login Component", () => {
   test("LOGIN - Test if button tag exist in Login component", () => {
     const wrapper = mount(<Login />);
     expect(wrapper.find("button").length).toEqual(1);
+  });
+
+  test("LOGIN - Test if input tag exist in Login component", () => {
+    const wrapper = mount(<Login />);
+    expect(wrapper.find("input").length).toEqual(2);
   });
 });

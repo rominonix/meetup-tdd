@@ -4,7 +4,6 @@ import Hero from "../components/Hero/Hero";
 import { mount, configure } from "enzyme";
 import Enzyme from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
-import SearchEvent from "../components/SearchEvent/SearchEvent";
 Enzyme.configure({ adapter: new Adapter() });
 configure({ adapter: new Adapter() });
 
@@ -24,9 +23,8 @@ describe("HERO - Tester for Hero Component", () => {
     expect(wrapper.find(".hero").length).toEqual(1);
   });
 
-  // test("HERO - Test if SearchEvent Component renders into Hero Component initially", () => {
-  //   const wrapper = mount(<Hero />);
-  //   const actual = wrapper.contains(<SearchEvent />);
-  //   expect(actual).toBe(true);
-  // });
+  test("HERO - Test if H1 exist in Hero component", () => {
+    const wrapper = mount(<Hero />);
+    expect(wrapper.find("h1").length).toEqual(2);
+  });
 });

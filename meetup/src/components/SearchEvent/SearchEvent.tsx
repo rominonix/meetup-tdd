@@ -7,7 +7,7 @@ interface Event {
   id: string;
   title: string;
   description: string;
-  date: Date;
+  date: string;
   time: string;
   location?: { street: string; city: string };
   reviews: number[];

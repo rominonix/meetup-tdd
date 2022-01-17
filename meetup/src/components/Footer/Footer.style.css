@@ -1,6 +1,5 @@
 .footer {
     width: 100%;
-    /* position: absolute;
-    bottom: 0%; */
-    background-color: burlywood;
+    padding: 5% 0;
+    background-color: rgb(190, 217, 238);
 }
