@@ -28,7 +28,7 @@ const Navigation = () => {
             <ul>
               <li>
                 <Link to="/login" className="link">
-                  Sign In
+                  Sign In 🔒 
                 </Link>
               </li>
             </ul>
@@ -36,7 +36,7 @@ const Navigation = () => {
             <ul>
               <li>
                 <Link to="/profile" className="link">
-                  My profile
+                  My profile 🥳 
                 </Link>
               </li>
             </ul>
