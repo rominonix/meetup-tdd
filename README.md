@@ -16,6 +16,25 @@
 10. Start App `npm start`
 11. Start tester `npm run test`
 
+## Users to login
 
+- email: david@email.com , password: admin123
+- email: romi@email.com , password: user123
+- email: nilu@email.com , password: user456
+- email: philip@email.com , password: user789
 
+## Use Case Diagram
+[UML Diagram](https://lucid.app/lucidchart/2462731b-144b-48e7-95d9-53040c92af52/edit?invitationId=inv_c316cc78-7a3a-48cb-8ebd-68cb20c6d969)
 
+![Diagram](meetup/src/assets/diagram.jpeg)
+
+## User Stories
+
+- As user can browse events
+- As user can sign in
+- As user logged in can browse events
+- As user logged in can attend events
+- As user logged in can commet events
+- As user logged in can create events
+- As user logged in can stop attend to events
+- As user logged in can log out
