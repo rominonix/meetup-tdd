@@ -21,3 +21,13 @@
 
 ![Diagram](meetup/src/assets/diagram.jpeg)
 
+## User Stories
+
+- As user can browse events
+- As user can sign in
+- As user logged in can browse events
+- As user logged in can attend events
+- As user logged in can commet events
+- As user logged in can create events
+- As user logged in can stop attend to events
+- As user logged in can log out
