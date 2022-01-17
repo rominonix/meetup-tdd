@@ -10,9 +10,7 @@ interface SearchProp {
   location?: { street: string; city: string };
   eventImg: string;
 }
-// interface User {
-//   eventAttend: string;
-// }
+
 const EventList = ({
   id,
   title,
@@ -58,7 +56,7 @@ const EventList = ({
         <h3>{title}</h3>
         <p className="description">{description}</p>
 
-        {showButton && <button onClick={currentEvent}>attend</button>}
+        {showButton && <button className="attend-button" onClick={currentEvent}>attend</button>}
       </div>
     </div>
   );

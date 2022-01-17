@@ -8,9 +8,7 @@
   width: 60vw;
   display: grid;
   grid-template-columns: 30% 70%;
-  margin: 3%;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+  margin: 2%;
   background-color: white;
 }
 
@@ -27,13 +25,26 @@ img {
   display: flex;
   justify-content: end;
   gap: 5%;
-  padding: 2%;
+  padding: 0 2%;
 }
 
 .details {
-  padding: 1%;
+  padding: 1% 5%;
 }
 
 .description {
   text-align: justify;
+}
+
+.attend-button {
+  border: none;
+  width: 8rem;
+  height: 2rem;
+  box-shadow: 3px 3px #252525;
+  margin-bottom: 1%;
+}
+
+.attend-button:hover {
+  background-color: #252525;
+  color: whitesmoke;
 }
