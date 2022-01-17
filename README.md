@@ -16,6 +16,13 @@
 10. Start App `npm start`
 11. Start tester `npm run test`
 
+## Users to login
+
+- email: david@email.com , password: admin123
+- email: romi@email.com , password: user123
+- email: nilu@email.com , password: user456
+- email: philip@email.com , password: user789
+
 ## Use Case Diagram
 [UML Diagram](https://lucid.app/lucidchart/2462731b-144b-48e7-95d9-53040c92af52/edit?invitationId=inv_c316cc78-7a3a-48cb-8ebd-68cb20c6d969)
 
