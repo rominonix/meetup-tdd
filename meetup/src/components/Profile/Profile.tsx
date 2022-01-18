@@ -30,7 +30,6 @@ interface Event {
 
 const Profile = () => {
   const [profile, setProfile] = useState<Profile>();
-  // const [event, setEvent] = useState<Event[]>([])
   const [eventProfile, setEventProfile] = useState<Event[]>([]);
   const navigate = useNavigate();
 
@@ -85,16 +84,6 @@ const Profile = () => {
     });
     setEventProfile(t);
     console.log(profile);
-
-    // eventId?.forEach(event => console.log(event))
-
-    // console.log(event);
-
-    // const res = await apiService.getEventById(event);
-    // console.log("eventId", res);
-    // eventId?.forEach(event => await apiService.getEventById(event))
-    // const res = await apiService.getEventById(eventId);
-    // console.log("eventId", res );
   };
 
   useEffect(() => {
@@ -121,24 +110,40 @@ const Profile = () => {
 
   return (
     <div className="profile">
-      <h3>{profile?.user.name}</h3>
-      <h5>{profile?.user.email}</h5>
-      <div className="event-attend">
+      <div className="profile-details">
         <div>
-          <h2>Event attend</h2>
-
-          {eventProfile.map((ev) => {
-            return (
-              <div>
-                <p>{ev.event.title}</p>
-              </div>
-            );
-          })}
+          <h3>{profile?.user.name}</h3>
+          <h4>{profile?.user.email}</h4>
+        </div>
+        <div>
+          <button className="log-out" type="button" onClick={logOut}>
+            Log out
+          </button>
         </div>
       </div>
-      <button type="button" onClick={logOut}>
-        log out
-      </button>
+      <h3>Event attend</h3>
+      <div className="event-attend">
+        {/* <div>ajajajja</div> */}
+        {eventProfile.map((e) => {
+          return (
+            <div className="event-profile" key={e.event.id}>
+              <div className="event-profile">
+                <h4>{e.event.title}</h4>
+                <div className="date-time-profile">
+                  <p> 📅 {e.event.date}</p>
+                  <p> 🕣 {e.event.time}</p>
+                </div>
+                <div>
+                  <img className="profile-img" src={e.event.eventImg} alt="" />
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        </div>
+      {/* <button type="button" onClick={logOut}>
+        Log out
+      </button> */}
     </div>
   );
 };

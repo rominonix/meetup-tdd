@@ -25,9 +25,10 @@ img {
 .date-time {
   display: flex;
   justify-content: end;
+  align-items: center;
   gap: 5%;
   padding: 0 2%;
-  font-size: .8rem;
+  font-size: .8rem;  
 }
 
 .details {
@@ -43,8 +44,10 @@ img {
   border: none;
   width: 8rem;
   height: 2rem;
-  box-shadow: 3px 3px #252525;
+  background-color: rgb(240, 233, 152);
+  /* box-shadow: 3px 3px #252525; */
   margin-bottom: 1%;
+  border-radius: 50px;
 }
 
 .attend-button:hover {

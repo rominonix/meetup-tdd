@@ -104,6 +104,7 @@ const SearchEvent = () => {
             description={event.description}
             date={event.date}
             time={event.time}
+            availableSeats={event.availableSeats}
             eventImg={event.eventImg}
           />
         );

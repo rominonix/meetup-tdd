@@ -35,7 +35,7 @@ const Navigation = () => {
           ) : (
             <ul>
               <li>
-                <Link to="/profile" className="link">
+                <Link to="/profile" className="link-profile">
                   My profile 🥳 
                 </Link>
               </li>

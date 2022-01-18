@@ -8,6 +8,7 @@ interface SearchProp {
   date: string;
   time: string;
   location?: { street: string; city: string };
+  availableSeats: number
   eventImg: string;
 }
 
@@ -17,6 +18,7 @@ const EventList = ({
   description,
   date,
   time,
+  availableSeats,
   eventImg,
 }: SearchProp) => {
   const [eventAttend, setEventAttend] = useState("");
@@ -52,11 +54,11 @@ const EventList = ({
         <div className="date-time">
           <p> 📅 {date}</p>
           <p> 🕣 {time}</p>
+          <p> 🪑 {availableSeats}</p>
+        {showButton && <button className="attend-button" onClick={currentEvent}>Attend</button>}
         </div>
         <h3>{title}</h3>
         <p className="description">{description}</p>
-
-        {showButton && <button className="attend-button" onClick={currentEvent}>attend</button>}
       </div>
     </div>
   );

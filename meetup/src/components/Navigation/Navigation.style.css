@@ -1,40 +1,41 @@
-.logo{
+.logo {
   text-decoration: none;
   color: #252525;
 }
 
-.link-sign-in{
-  
+.link-sign-in {
   text-decoration: none;
   color: #252525;
-  /* background-color: yellowgreen; */
-  /* padding: 1%; */
+}
+
+.link-profile {
+  text-decoration: none;
+  color: #252525;
 }
 
 .navigation {
-    height: 4em;
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    background-color: whitesmoke;
-  }
-  
-  nav {
-    position: absolute;
-    right: 5%;
-    min-width: 8em;
-    justify-content: center;
-    /* display: flex; */
-  }
-  
-  ul {
-    display: flex;
-    gap: 15%;
-  }
-  
-  li {
-    list-style: none;
-    background-color: rgb(240, 233, 152);
-    padding: 5% 15%;
-    border-radius: 50px;
-  }
+  height: 4em;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  background-color: whitesmoke;
+}
+
+nav {
+  position: absolute;
+  right: 5%;
+  min-width: 8em;
+  justify-content: center;
+}
+
+ul {
+  display: flex;
+  gap: 15%;
+}
+
+li {
+  list-style: none;
+  background-color: rgb(240, 233, 152);
+  padding: 5% 15%;
+  border-radius: 50px;
+}
