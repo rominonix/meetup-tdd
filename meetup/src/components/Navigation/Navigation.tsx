@@ -20,14 +20,14 @@ const Navigation = () => {
   return (
     <div>
       <div className="navigation">
-        <Link to="/" className="link">
+        <Link to="/" className="logo">
           <h2>MeetUp 🎉 </h2>
         </Link>
         <nav>
           {menu ? (
             <ul>
               <li>
-                <Link to="/login" className="link">
+                <Link to="/login" className="link-sign-in">
                   Sign In 🔒 
                 </Link>
               </li>

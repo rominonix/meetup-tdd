@@ -13,6 +13,7 @@
   padding: 1%;
   background-color: whitesmoke;
   margin: 1%;
+  border-radius: 50px;
 }
 
 input::placeholder {
@@ -24,10 +25,13 @@ input::placeholder {
   border: none;
   width: 8rem;
   height: 2.5rem;
-  box-shadow: 5px 5px #252525;
+  border-radius: 50px;
+  background-color: #252525;
+  color: whitesmoke;
+  /* box-shadow: 5px 5px #252525; */
 }
 
 .login-button:hover {
-  background-color: #252525;
-  color: whitesmoke;
+  background-color: whitesmoke;
+  color: #252525;
 }

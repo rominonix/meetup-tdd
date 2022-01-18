@@ -10,6 +10,7 @@
   grid-template-columns: 30% 70%;
   margin: 2%;
   background-color: white;
+  border-radius: 10px;
 }
 
 .img-thumbnail {
@@ -26,6 +27,7 @@ img {
   justify-content: end;
   gap: 5%;
   padding: 0 2%;
+  font-size: .8rem;
 }
 
 .details {
@@ -33,7 +35,8 @@ img {
 }
 
 .description {
-  text-align: justify;
+  text-align: left;
+  font-size: .9rem;
 }
 
 .attend-button {

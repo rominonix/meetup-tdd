@@ -12,7 +12,7 @@
   margin-bottom: 2%;
   display: flex;
   justify-content: center;
-  column-gap: 2%;
+  column-gap: 1%;
 }
 
 .input-search {
@@ -20,6 +20,7 @@
   height: 2.5rem;
   width: 15rem;
   padding: 0 1%;
+  border-radius: 50px;
 }
 
 .input-search::placeholder {
@@ -31,10 +32,13 @@
   border: none;
   width: 8rem;
   height: 2.5rem;
-  box-shadow: 5px 5px #252525;
+  background-color: rgb(214, 186, 240);
+  /* box-shadow: 3px 3px #252525; */
+  border-radius: 50px;
 }
 
 .search-button:hover {
   background-color: #252525;
   color: whitesmoke;
+  /* box-shadow: 5px 5px rgb(214, 186, 240); */
 }
