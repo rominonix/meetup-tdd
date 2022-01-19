@@ -15,7 +15,7 @@ describe("Tester for App Component", () => {
     render(<App />);
   });
 
-  test("APP - Test if className 'App' exist", () => {
+  test("APP - Test if className 'App' ext", () => {
     const wrapper = render(<App />);
     expect(wrapper.container.firstChild).toHaveClass('App');
   });

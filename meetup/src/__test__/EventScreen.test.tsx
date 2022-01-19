@@ -14,12 +14,6 @@ describe("EVENT SCREEN - Tester for EventScreen Component", () => {
     render(<EventScreen />);
   });
 
-  // test("EVENT SCREEN - Test if EvenList Component renders into EventScreen view initially", () => {
-  //   const wrapper = mount(<EventScreen />);
-  //   const actual = wrapper.contains(<EventList />);
-  //   expect(actual).toBe(true);
-  // });
-
   test("EVENT SCREEN - Test if className 'event-screen' exist in EventScreen component", () => {
     const wrapper = mount(<EventScreen />);
     expect(wrapper.find(".event-screen").length).toEqual(1);

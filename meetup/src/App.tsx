@@ -4,24 +4,23 @@ import Home from "./views/HomeScreen/Home";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import Login from "./views/LoginScreen/LoginScreen";
-import Profile from './components/Profile/Profile';
+import Profile from "./components/Profile/Profile";
 
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from "react";
 
 function App() {
-
   return (
-    <Router>
-      <div className="App">
+    <div className="App">
+      <Router>
         <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 }
 
