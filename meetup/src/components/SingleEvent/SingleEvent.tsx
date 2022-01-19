@@ -1,7 +1,13 @@
 import "./SingleEvent.style.css";
 import Comment from '../Comment/Comment'
-const SingleEvent = () => {
+interface Props {
+  closeModal: any;
+}
+
+const SingleEvent = ({closeModal}: Props) => {
   return (
+    <div className="modal">
+
     <div className="single-event">
       <div>
         <h1 className="title">Event title</h1>
@@ -15,6 +21,10 @@ const SingleEvent = () => {
         <button>attend</button>
       </div>
       <Comment/>
+    </div>
+    <button className="modal-close-button" onClick={() => closeModal(false)}>
+        <h4>X</h4>
+      </button>
     </div>
   );
 };

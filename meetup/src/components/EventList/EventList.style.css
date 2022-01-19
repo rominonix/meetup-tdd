@@ -17,9 +17,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
+
 img {
   width: 80%;
+}
+
+.img-thumbnail:hover img {
+  opacity: 0.3;
+  transition: .5s ease;
 }
 
 .date-time {
@@ -45,7 +52,6 @@ img {
   width: 8rem;
   height: 2rem;
   background-color: rgb(240, 233, 152);
-  /* box-shadow: 3px 3px #252525; */
   margin-bottom: 1%;
   border-radius: 50px;
 }
