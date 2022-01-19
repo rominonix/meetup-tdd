@@ -120,6 +120,7 @@ export const updateEventAttend: RequestHandler = async (req, res) => {
     const event = await User.findOne({ where: {email: email} });
     console.log(event?.eventAttend)
     event?.eventAttend.push(eventAttend)
+    console.log("Updating the event attend with: ", event?.eventAttend)
     await User.update({ eventAttend: event?.eventAttend},{where:{email:email}});
     res.json({ message: "update" });
   } catch (error) {
