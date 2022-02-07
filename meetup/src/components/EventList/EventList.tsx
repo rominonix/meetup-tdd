@@ -32,8 +32,6 @@ const EventList = ({
     if (localStorage.getItem("email") !== null) {
       let email: any = localStorage.getItem("email");
       console.log(`Email address exists`);
-      // console.log("Current Event ID", currentId)
-      // console.log("Email", email)
 
       const res = await apiService.putEventAttend(email, currentId);
       setEventAttend(res);
@@ -50,7 +48,6 @@ const EventList = ({
   };
 
   useEffect(() => {
-    // currentEvent();
     if (localStorage.getItem("email") !== null) {
       setShowButton(true);
     }

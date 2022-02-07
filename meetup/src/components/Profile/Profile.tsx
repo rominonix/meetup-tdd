@@ -38,23 +38,18 @@ const Profile = () => {
     const res = await apiService.getProfile(email);
 
     let eventId = res?.user.eventAttend;
-    console.log(eventId);
+  
     let t: any = [];
 
     var results: number[] = await Promise.all(
       eventId?.map(async (event: any) => {
         const event_response = await apiService.getEventById(event);
-        console.log(event_response);
 
         t.push(event_response);
         console.log("This, in loop", t);
-
-        // console.log(res.event);
-        // return res
       })
     );
-    console.log("My t", t);
-
+    
     setEventProfile(t);
 
     setProfile(res);
@@ -67,42 +62,24 @@ const Profile = () => {
   };
 
   const getEventById = async () => {
-    // console.log("ajajaj");
-
+ 
     let eventId = profile?.user.eventAttend;
-
-    console.log(Array.isArray(eventId));
-    console.log(typeof eventId);
-
-    console.log("holi event", eventId);
     let t: any = [];
     eventId?.map(async (event) => {
       const res = await apiService.getEventById(event);
       t.push(res.event);
-      // console.log(res.event);
-      // return res
+    
     });
     setEventProfile(t);
     console.log(profile);
   };
 
   useEffect(() => {
-    console.log("UseEffect - LoadProfile");
+  
     loadProfile();
-    // getEventById()
+  
   }, []);
 
-  // useEffect(()=>{
-  //   console.log("UseEffect - getEventById")
-
-  //   getEventById()
-  // },[])
-
-  // useEffect(() => {
-  //   console.log("UseEffect - Empty")
-
-  //   // console.log("this is your profile", profile);
-  // }, [profile]);
 
   useEffect(() => {
     console.log("Use effect, empty 2", eventProfile);
@@ -123,7 +100,7 @@ const Profile = () => {
       </div>
       <h3>Event attend</h3>
       <div className="event-attend">
-        {/* <div>ajajajja</div> */}
+       
         {eventProfile.map((e) => {
           return (
             <div className="event-profile" key={e.event.id}>
@@ -141,9 +118,6 @@ const Profile = () => {
           );
         })}
         </div>
-      {/* <button type="button" onClick={logOut}>
-        Log out
-      </button> */}
     </div>
   );
 };

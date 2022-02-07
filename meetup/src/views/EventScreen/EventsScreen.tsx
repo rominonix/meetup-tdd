@@ -1,17 +1,12 @@
-import './EventScreen.style.css'
-import SearchEvent from '../../components/SearchEvent/SearchEvent';
+import "./EventScreen.style.css";
+import SearchEvent from "../../components/SearchEvent/SearchEvent";
 
+const EventScreen = () => {
+  return (
+    <div className="event-screen">
+      <SearchEvent />
+    </div>
+  );
+};
 
-
-const EventScreen =()=>{
-    return(
-        <div className="event-screen">
-
-        <SearchEvent />
-        {/* <EventList /> */}
-        {/* <SingleEvent/> */}
-        </div>
-    )
-}
-
-export default EventScreen
+export default EventScreen;
