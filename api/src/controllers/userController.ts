@@ -34,8 +34,6 @@ export const getAllUser: RequestHandler = async (req, res) => {
 export const getUserByEmail: RequestHandler = async (req, res) => {
   try {
     const { email } = req.params;
-    console.log("back-email", email);
-    
     const user = await User.findOne({
       attributes: { exclude: ["createdAt", "updatedAt"] },
       where: {
@@ -53,29 +51,6 @@ export const getUserByEmail: RequestHandler = async (req, res) => {
     console.log(error);
   }
 };
-
-
-// export const getUserById: RequestHandler = async (req, res) => {
-//   try {
-//     const { id } = req.params;
-//     const user = await User.findOne({
-//       attributes: { exclude: ["createdAt", "updatedAt"] },
-//       where: {
-//         id: {
-//           [Op.eq]: id,
-//         },
-//       },
-//     });
-
-//     //   if (!id || !isValidUuid(id)) {
-//     //     throw new Error("This id are not valid");
-//     //   }
-//     res.json({ user });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
 
 export const updateUser: RequestHandler = async (req, res) => {
   try {
@@ -103,9 +78,7 @@ export const loginUser: RequestHandler = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ where: { email: email, password: password } });
-
     if(!user){throw new Error('User not found')}
-    // await User.update({name, email, password},{where:{id: req.params.id}});
     res.json({ user });
   } catch (error) {
     res.json(error);
@@ -115,12 +88,9 @@ export const loginUser: RequestHandler = async (req, res) => {
 
 export const updateEventAttend: RequestHandler = async (req, res) => {
   try {
-    console.log("Holiiii")
     const { email, eventAttend } = req.body;
     const event = await User.findOne({ where: {email: email} });
-    console.log(event?.eventAttend)
     event?.eventAttend.push(eventAttend)
-    console.log("Updating the event attend with: ", event?.eventAttend)
     await User.update({ eventAttend: event?.eventAttend},{where:{email:email}});
     res.json({ message: "update" });
   } catch (error) {

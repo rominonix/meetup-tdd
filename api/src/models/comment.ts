@@ -5,7 +5,6 @@ interface CommentAttributes {
   id: string;
   EventId: string;
   body: string;
-  // date: Date;
   UserId: string;
 }
 
@@ -19,7 +18,6 @@ class Comment
   public id!: string;
   public EventId!: string;
   public body!: string;
-  // public date!: Date;
   public UserId!: string;
 
   // timestamps!
@@ -43,10 +41,6 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // date: {
-    //   type: DataTypes.DATE,
-    //   allowNull: false,
-    // },
     UserId: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -56,7 +50,6 @@ Comment.init(
   {
     timestamps: true,
     sequelize: db,
-    // paranoid: true,
   }
 );
 

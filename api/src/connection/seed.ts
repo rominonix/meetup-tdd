@@ -2,51 +2,6 @@ import User from "../models/user";
 import Event from "../models/event";
 import Comment from "../models/comment";
 import { v4 as uuidv4 } from "uuid";
-// import { where } from "sequelize/dist";
-
-// User.create({
-//   id: uuidv4(),
-//   name: "Pelle",
-//   email: "pelle@email.com",
-//   password: "admin12345",
-//   eventAttend: [],
-//   eventAttended: [],
-// })
-//   .then((res) => {
-//     let userid = res.get("id");
-//     Event.create({
-//       id: uuidv4(),
-//       title: "Virtual Tour in Moderna Museum",
-//       description:
-//         "Pellentesque porta urna a ex rhoncus varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vulputate ante sed enim eleifend vulputate. In ultrices nulla ac lacus aliquam pharetra. Etiam viverra elit mauris, eget cursus lorem sagittis at. Suspendisse id euismod eros. Duis convallis mauris malesuada placerat aliquam. Aenean sagittis efficitur commodo.",
-//       date: new Date("2022-03-25"),
-//       time: "18:00",
-//       location: { street: "", city: "" },
-//       reviews: [],
-//       digitalEvent: true,
-//       availableSeats: 3,
-//       UserId: userid,
-//       eventImg: "https://unsplash.com/photos/Oqv_bQbZgS8",
-//     })
-//       .then((eventResult) => {
-//         res.addEvent([eventResult]);
-//         return eventResult;
-//       })
-//       .then((usereventResult) => {
-//         let eventId = usereventResult.get("id");
-//         Comment.create({
-//           id: uuidv4(),
-//           body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//           EventId: eventId,
-//           UserId: userid,
-//         }).catch((error) => {
-//           console.log(error);
-//         });
-//       });
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
 
 User.bulkCreate([
   {

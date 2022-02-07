@@ -43,11 +43,6 @@ class Event
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 
-  // public getComment!: HasManyGetAssociationsMixin<Comment>; // Note the null assertions!
-  // public addComment!: HasManyAddAssociationMixin<Comment, number>;
-  // public hasComment!: HasManyHasAssociationMixin<Comment, number>;
-  // public countComment!: HasManyCountAssociationsMixin;
-  // public createComment!: HasManyCreateAssociationMixin<Comment>;
 }
 
 Event.init(
@@ -103,7 +98,6 @@ Event.init(
   {
     timestamps: true,
     sequelize: db,
-    // paranoid: true,
   }
 );
 

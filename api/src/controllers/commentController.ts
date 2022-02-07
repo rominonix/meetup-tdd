@@ -6,15 +6,15 @@ import { Op } from "sequelize";
 export const createComment: RequestHandler = async (req, res) => {
   try {
     const { eventid } = req.params;
-    console.log(eventid);
+    // console.log(eventid);
     
     const { body, userid } = req.body;
-    console.log(body, userid);
+    // console.log(body, userid);
     
     const findEvent = await Comment.findOne({
       where: { EventId: req.params.eventid },
     });
-    console.log('event',findEvent);
+    // console.log('event',findEvent);
     
     if (!findEvent) {
       throw new Error("Event not found");

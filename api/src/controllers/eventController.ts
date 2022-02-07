@@ -49,8 +49,6 @@ export const getAllEvent: RequestHandler = async (req, res) => {
 export const getEventById: RequestHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("eventid", id);
-    
     const event = await Event.findOne({
       attributes: { exclude: ["createdAt", "updatedAt"] },
       where: {
@@ -113,14 +111,7 @@ export const deleteEvent: RequestHandler = async (req, res) => {
 };
 
 export const searchEvent: RequestHandler = async (req, res) => {
-  console.log("TEST");
-  console.log(req.query);
 
-  // const { datta } = req.query.datta
-  // console.log(req.query)
-  // console.log(req)
-
-  // let onlineTrueOrFalse: boolean = Boolean(req.query.online);
   let onlineTrueOrFalse: number;
 
   if (req.query.online === "") {
@@ -129,20 +120,17 @@ export const searchEvent: RequestHandler = async (req, res) => {
     onlineTrueOrFalse = Number(req.query.online);
   }
 
-  console.log("OnlineTrueOrfalse", onlineTrueOrFalse);
-
   if (onlineTrueOrFalse === 2 && req.query.date === "") {
-    console.log("Online och offline");
+  
     try {
       const events = await Event.findAll({
         where: {
           title: {
-            [Op.like]: "%" + req.query.title + "%",
-            // [Op.like]: '%hack%'
+            [Op.like]: `%${req.query.title}%`
           },
           location: {
             city: {
-              [Op.like]: "%" + req.query.location + "%",
+              [Op.like]: `%${req.query.location}%`
             },
           },
         },
@@ -154,19 +142,18 @@ export const searchEvent: RequestHandler = async (req, res) => {
       return;
     }
   } else if (onlineTrueOrFalse === 2) {
-    console.log("Online och offline");
-    let datta: any = req.query.date;
-    let startDate = new Date(datta);
-    let endDate = new Date(datta);
+    let date: any = req.query.date;
+    let startDate = new Date(date);
+    let endDate = new Date(date);
     try {
       const events = await Event.findAll({
         where: {
           title: {
-            [Op.like]: "%" + req.query.title + "%",
+            [Op.like]: `%${req.query.title}%`
           },
           location: {
             city: {
-              [Op.like]: "%" + req.query.location + "%",
+              [Op.like]: `%${req.query.location}%`
             },
           },
           date: {
@@ -187,11 +174,11 @@ export const searchEvent: RequestHandler = async (req, res) => {
       const events = await Event.findAll({
         where: {
           title: {
-            [Op.like]: "%" + req.query.title + "%",
+            [Op.like]: `%${req.query.title}%`
           },
           location: {
             city: {
-              [Op.like]: "%" + req.query.location + "%",
+              [Op.like]: `%${req.query.location}%`
             },
           },
           digitalEvent: onlineTrueOrFalse,
@@ -204,18 +191,18 @@ export const searchEvent: RequestHandler = async (req, res) => {
       return;
     }
   } else {
-    let datta: any = req.query.date;
-    let startDate = new Date(datta);
-    let endDate = new Date(datta);
+    let date: any = req.query.date;
+    let startDate = new Date(date);
+    let endDate = new Date(date);
     try {
       const events = await Event.findAll({
         where: {
           title: {
-            [Op.like]: "%" + req.query.title + "%",
+            [Op.like]: `%${req.query.title}%`
           },
           location: {
             city: {
-              [Op.like]: "%" + req.query.location + "%",
+              [Op.like]: `%${req.query.location}%`
             },
           },
           date: {
