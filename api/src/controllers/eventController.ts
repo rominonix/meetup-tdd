@@ -157,6 +157,7 @@ export const searchEvent: RequestHandler = async (req, res) => {
             [Op.between]: [startDate, endDate],
           },
         },
+        order: [['date', 'ASC']]
       });
       res.json(events);
       return;
@@ -180,6 +181,7 @@ export const searchEvent: RequestHandler = async (req, res) => {
           },
           digitalEvent: onlineTrueOrFalse,
         },
+        order: [['date', 'ASC']]
       });
       res.json(events);
       return;
@@ -207,6 +209,7 @@ export const searchEvent: RequestHandler = async (req, res) => {
           },
           digitalEvent: onlineTrueOrFalse,
         },
+        order: [['date', 'ASC']]
       });
       res.json(events);
       return;
