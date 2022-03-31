@@ -2,6 +2,7 @@ import User from "../models/user";
 import { RequestHandler } from "express";
 import { v4 as uuidv4 } from "uuid";
 import { Op } from "sequelize";
+import { any } from "sequelize/dist/lib/operators";
 
 export const createUser: RequestHandler = async (req, res) => {
   try {
