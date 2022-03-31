@@ -103,17 +103,17 @@ const SingleEvent = ({
           <p>
             📅 {date} &nbsp; &nbsp; 🕗 {time}
           </p>
-          <p> 🤓 hosted by {owner}</p>
+         {showCommentSection && (<p> 🤓 hosted by {owner}</p>)}
           <p> 🪑 available seats {availableSeats}</p>
           <p> 🏙 {city}</p>
           {eventStreet ? <p>Digital event</p> : <p>{street}</p>}
         </div>
 
         <div className="comment-section">
-          {eventComment.map((comment) => {
+          {eventComment.map((comment, index) => {
             return (
               //@ts-ignore
-              <div key={comment.userId} className="single-comment">
+              <div key={index} className="single-comment">
                 😃
                 <p className="text-comment">{comment.body} </p>
               </div>
