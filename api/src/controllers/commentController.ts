@@ -5,20 +5,9 @@ import { Op } from "sequelize";
 
 export const createComment: RequestHandler = async (req, res) => {
   try {
-    const { eventid } = req.params;
-    // console.log(eventid);
-    
-    const { body, userid } = req.body;
-    // console.log(body, userid);
-    
-    const findEvent = await Comment.findOne({
-      where: { EventId: req.params.eventid },
-    });
-    // console.log('event',findEvent);
-    
-    if (!findEvent) {
-      throw new Error("Event not found");
-    } else {
+    const { eventid, userid } = req.params;
+    const { body } = req.body;
+  
       const id = uuidv4();
       const newComment = await Comment.create({
         id,
@@ -27,7 +16,6 @@ export const createComment: RequestHandler = async (req, res) => {
         UserId: userid,
       });
       res.json(newComment);
-    }
   } catch (error) {
     res.json(error);
   }
@@ -36,9 +24,9 @@ export const createComment: RequestHandler = async (req, res) => {
 export const getAllComment: RequestHandler = async (req, res) => {
   try {
     const comments = await Comment.findAll({
-      attributes: ["body", "UserId", "EventId"],
+      attributes: ["UserId", "EventId", "body"],
     });
-    res.json(comments);
+    res.json({comments});
   } catch (error) {
     res.json(error);
   }
@@ -56,10 +44,24 @@ export const getCommentById: RequestHandler = async (req, res) => {
       },
     });
 
-    //   if (!id || !isValidUuid(id)) {
-    //     throw new Error("This id are not valid");
-    //   }
     res.json({ comment });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getCommentByEventId: RequestHandler = async (req, res) => {
+  try {
+    const { EventId } = req.params;
+    const comment = await Comment.findAll({
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+      where: {
+        EventId: {
+          [Op.eq]: EventId,
+        },
+      },
+    });
+    res.json(comment);
   } catch (error) {
     console.log(error);
   }

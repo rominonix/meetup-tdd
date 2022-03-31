@@ -57,11 +57,7 @@ export const getEventById: RequestHandler = async (req, res) => {
         },
       },
     });
-
-    //   if (!id || !isValidUuid(id)) {
-    //     throw new Error("This id are not valid");
-    //   }
-    res.json({ event });
+    res.json( event );
   } catch (error) {
     console.log(error);
   }
@@ -80,7 +76,7 @@ export const updateEvent: RequestHandler = async (req, res) => {
     } = req.body;
     const event = await Event.findOne({ where: { id: req.params.eventid } });
     if (!event) {
-      throw new Error("User not found");
+      throw new Error("Event not found");
     }
     await Event.update(
       {
@@ -94,7 +90,7 @@ export const updateEvent: RequestHandler = async (req, res) => {
       },
       { where: { id: req.params.eventid } }
     );
-    res.json({ message: "event has updated" });
+    res.json({ message: "Event has updated" });
   } catch (error) {
     res.json(error);
   }
@@ -134,6 +130,7 @@ export const searchEvent: RequestHandler = async (req, res) => {
             },
           },
         },
+        order: [['date', 'ASC']]
       });
       res.json(events);
       return;

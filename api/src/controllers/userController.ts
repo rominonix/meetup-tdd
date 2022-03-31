@@ -15,10 +15,10 @@ export const createUser: RequestHandler = async (req, res) => {
     } else {
       const id = uuidv4();
       const newUser = await User.create({ id, name, email, password });
-      res.json(newUser);
+      res.json({newUser});
     }
   } catch (error) {
-    res.json(error);
+    res.json({error});
   }
 };
 
@@ -27,7 +27,7 @@ export const getAllUser: RequestHandler = async (req, res) => {
     const users = await User.findAll({ attributes: {exclude: ["createdAt", "updatedAt"] } });
     res.json(users);
   } catch (error) {
-    res.json(error);
+    res.json({error});
   }
 };
 
@@ -42,10 +42,24 @@ export const getUserByEmail: RequestHandler = async (req, res) => {
         },
       },
     });
+    res.json({ user });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-    //   if (!id || !isValidUuid(id)) {
-    //     throw new Error("This id are not valid");
-    //   }
+
+export const getUserById: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findOne({
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+    });
     res.json({ user });
   } catch (error) {
     console.log(error);
@@ -86,12 +100,31 @@ export const loginUser: RequestHandler = async (req, res) => {
 };
 
 
+const removeItemFromArr = ( eventarray: any, event: any ) => {
+  //@ts-ignore
+  return eventarray.filter( e => e !== event );
+};
+
+
 export const updateEventAttend: RequestHandler = async (req, res) => {
   try {
     const { email, eventAttend } = req.body;
     const event = await User.findOne({ where: {email: email} });
-    event?.eventAttend.push(eventAttend)
+    event?.eventAttend.push(eventAttend)   
     await User.update({ eventAttend: event?.eventAttend},{where:{email:email}});
+    res.json({ message: "update" });
+  } catch (error) {
+    res.json(error);
+  }
+};
+
+
+export const updateNotEventAttend: RequestHandler = async (req, res) => {
+  try {
+    const { email, eventAttend } = req.body;
+    const event = await User.findOne({ where: {email: email} });
+   const newEventList = removeItemFromArr(event?.eventAttend, eventAttend)
+    await User.update({ eventAttend: newEventList},{where:{email:email}});
     res.json({ message: "update" });
   } catch (error) {
     res.json(error);
