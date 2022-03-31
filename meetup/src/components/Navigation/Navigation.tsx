@@ -14,20 +14,18 @@ const Navigation = () => {
 
   const loadProfile = async () => {
     let email: any = localStorage.getItem("email");
-    try{
+    try {
       const response = await apiService.getProfile(email);
       setProfile(response);
-
-    } catch (error){
+    } catch (error) {
       console.log(error);
-      
     }
   };
 
   const changeMenu = () => {
     if (localStorage.getItem("email") !== null) {
       setMenu(false);
-    } 
+    }
   };
 
   useEffect(() => {
@@ -57,11 +55,11 @@ const Navigation = () => {
                   Create Event 📌
                 </Link>
               </li>
-             { profile ? ( <li>
+              <li>
                 <Link to="/profile" className="link-profile">
                   {profile?.user.name} 🥳
                 </Link>
-              </li>) : ( <li> loading name</li> )}
+              </li>
             </ul>
           )}
         </nav>

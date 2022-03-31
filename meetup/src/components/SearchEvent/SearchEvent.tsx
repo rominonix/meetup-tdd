@@ -57,6 +57,8 @@ const SearchEvent = () => {
     // }
   }, []);
 
+  
+
   return (
     <div className="search-event">
       <form action="" className="search-form">

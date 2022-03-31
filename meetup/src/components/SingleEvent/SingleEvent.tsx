@@ -18,7 +18,7 @@ interface Props {
 }
 
 interface newComment {
-  // id: string;
+  id: string;
   body: string | null;
   userId: string;
   eventId: string;
@@ -43,6 +43,7 @@ const SingleEvent = ({
   const [eventComment, setEventComment] = useState<newComment[]>([]);
   const [commentBody, setCommentBody] = useState("");
   const [showCommentSection, setShowCommentSection] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const loadOwner = async () => {
     const userId = UserId;
@@ -51,17 +52,17 @@ const SingleEvent = ({
   };
 
   const loadComment = async () => {
-    const eventId = id;
     try {
-      const comments = await apiService.getAllComments();
-      console.log(comments.data);
-      
+      const eventId = id;
+      const commentsInEvent = await apiService.getAllComments();
+      // console.log(commentsInEvent.data.comments);
       let commentEvent: any = [];
-      comments.data.forEach((comment: any) => {
+      commentsInEvent.data.comments.map((comment: any) => {
         if (comment.EventId === eventId) {
           commentEvent.push(comment);
         }
       });
+
       setShowCommentSection(true);
       setEventComment(commentEvent);
     } catch (error) {
@@ -73,7 +74,7 @@ const SingleEvent = ({
     const userId = UserId;
     const eventId = id;
     if (commentBody === "") {
-      alert("You comment are empty, try again");
+      setErrorMessage(true);
     } else {
       try {
         await apiService.createComment(eventId, userId, commentBody);
@@ -119,8 +120,13 @@ const SingleEvent = ({
             );
           })}
 
-          {/* {showCommentSection && ( */}
-
+          {errorMessage && (
+            <div className="modal">
+              <div className="message">You comment are empty 😢! </div>
+              <button className="close-button" onClick={() => setErrorMessage(false)}>X</button>
+            </div>
+          )}
+          {showCommentSection && (
             <div className="new-comment">
               <textarea
                 placeholder="comment"
@@ -140,10 +146,15 @@ const SingleEvent = ({
                 Comment
               </button>
             </div>
-           {/* )} */}
+          )}
         </div>
       </div>
-      <button className="modal-close-button" onClick={() => closeModal(false)}>
+      <button
+        className="modal-close-button"
+        onClick={() => {
+          closeModal(false);
+        }}
+      >
         <h4>X</h4>
       </button>
     </div>

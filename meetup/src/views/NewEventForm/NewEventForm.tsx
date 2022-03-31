@@ -188,14 +188,14 @@ const NewEventForm = () => {
         {message && (
           <div className="modal">
             <div className="message">You added a new event! 🎉 </div>
-            <button onClick={() => setMessage(false)}>X</button>
+            <button className="close-button" onClick={() => setMessage(false)}>X</button>
           </div>
         )}
 
         { errorMessage && (
           <div className="modal">
           <div className="message">Oh no 😱!! fill in the required fields and try again! </div>
-          <button onClick={() => setErrorMessage(false)}>X</button>
+          <button className="close-button" onClick={() => setErrorMessage(false)}>X</button>
         </div>
         )}
         <button
