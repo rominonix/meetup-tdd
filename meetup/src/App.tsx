@@ -5,8 +5,8 @@ import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import Login from "./views/LoginScreen/LoginScreen";
 import Profile from "./components/Profile/Profile";
+import NewEventForm from "./views/NewEventForm/NewEventForm";
 
-import { useEffect, useState } from "react";
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/new-event" element={<NewEventForm/>}/>
         </Routes>
         <Footer />
       </Router>

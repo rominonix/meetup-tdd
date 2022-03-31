@@ -1,9 +1,0 @@
-.event-screen {
-    padding: 5% 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    background-color: brown;
-}

@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import Hero from "../components/Hero/Hero";
 import { mount, configure } from "enzyme";
@@ -21,6 +20,11 @@ describe("HERO - Tester for Hero Component", () => {
   test("HERO - Test if className 'hero' exist in Hero component", () => {
     const wrapper = mount(<Hero />);
     expect(wrapper.find(".hero").length).toEqual(1);
+  });
+
+  test("HERO - Test if className 'hero-emoji' exist in Hero component", () => {
+    const wrapper = mount(<Hero />);
+    expect(wrapper.find(".hero-emoji").length).toEqual(1);
   });
 
   test("HERO - Test if H1 exist in Hero component", () => {

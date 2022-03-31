@@ -26,12 +26,11 @@ input::placeholder {
   width: 8rem;
   height: 2.5rem;
   border-radius: 50px;
-  background-color: #252525;
-  color: whitesmoke;
-  /* box-shadow: 5px 5px #252525; */
+  background-color: whitesmoke ;
+  color: #252525;
 }
 
 .login-button:hover {
-  background-color: whitesmoke;
-  color: #252525;
+  background-color: #252525 ;
+  color: whitesmoke;
 }

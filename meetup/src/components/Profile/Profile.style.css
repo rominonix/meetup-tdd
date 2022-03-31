@@ -1,20 +1,15 @@
 .profile {
   display: flex;
+  min-height: 90vh;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   padding: 3% 0;
-  background-color: rgb(176, 211, 176);
-  /* width: 100%;
-    padding: 3% 0;
-  row-gap:10% ; */
-  /* height: 100vh; */
+  background-color: rgb(214, 186, 240)
 }
 
 .profile-details {
   display: grid;
   width: 50vw;
-  /* background-color: yellowgreen; */
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-items: center;
@@ -26,38 +21,31 @@
   width: 70vw;
   margin: 2%;
   display: flex;
-  /* display: grid;
-  grid-template-columns: repeat(2, 1fr); */
   flex-direction: column;
-  /* height: 50vh; */
   align-content: center;
   justify-content: center;
   align-items: center;
   justify-items: center;
-  /* gap: 15%; */
-  /* background-color: yellow; */
 }
 
 .event-profile {
-  width: 50%;
+  width: 40%;
   background-color: whitesmoke;
   margin: 1%;
+  padding: 2%;
   display: grid;
-  /* grid-template-columns: repeat(2, 1fr); */
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* align-content: center; */
   justify-items: center;
   border-radius: 10px;
-  /* display: grid;
-    flex-direction: column; */
-
-  /* flex-direction: column; */
 }
 
 .profile-img {
-  width: 70%;
+  width: 80%;
+  margin: 2% 0;
+}
+
+.title {
+  margin-bottom: 4%;
 }
 
 .date-time-profile {

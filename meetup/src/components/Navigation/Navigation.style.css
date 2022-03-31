@@ -3,12 +3,14 @@
   color: #252525;
 }
 
-.link-sign-in {
+.link-profile, .link-sign-in {
   text-decoration: none;
   color: #252525;
+  background-color: rgb(240, 233, 152);
+  padding: 8% 15%;
+  border-radius: 50px;
 }
-
-.link-profile {
+.link-new-event {
   text-decoration: none;
   color: #252525;
 }
@@ -24,18 +26,15 @@
 nav {
   position: absolute;
   right: 5%;
-  min-width: 8em;
   justify-content: center;
 }
 
 ul {
   display: flex;
-  gap: 15%;
+  gap: 5%;
 }
 
 li {
   list-style: none;
-  background-color: rgb(240, 233, 152);
-  padding: 5% 15%;
-  border-radius: 50px;
+  min-width: 8em;
 }

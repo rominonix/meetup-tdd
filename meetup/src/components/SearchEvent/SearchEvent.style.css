@@ -33,12 +33,10 @@
   width: 8rem;
   height: 2.5rem;
   background-color: rgb(214, 186, 240);
-  /* box-shadow: 3px 3px #252525; */
   border-radius: 50px;
 }
 
 .search-button:hover {
   background-color: #252525;
   color: whitesmoke;
-  /* box-shadow: 5px 5px rgb(214, 186, 240); */
 }

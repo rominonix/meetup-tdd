@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Home from "../views/HomeScreen/Home";
 import Hero from '../components/Hero/Hero'
+import SearchEvent from "../components/SearchEvent/SearchEvent";
 import { mount, configure } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
@@ -16,6 +17,12 @@ describe("HOME SCREEN - Tester for HomeScreen Component", () => {
   test("HOME SCREEN - Test if Hero Component renders into HomeScreen View initially", () => {
     const wrapper = mount(<Home />);
     const actual = wrapper.contains(<Hero />);
+    expect(actual).toBe(true);
+  });
+
+  test("HOME SCREEN - Test if SearchEvent Component renders into HomeScreen View initially", () => {
+    const wrapper = mount(<Home />);
+    const actual = wrapper.contains(<SearchEvent />);
     expect(actual).toBe(true);
   });
 

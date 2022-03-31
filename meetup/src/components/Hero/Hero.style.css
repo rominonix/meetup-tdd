@@ -7,5 +7,8 @@
     align-items: center;
     flex-direction: column;
     background-color: rgb(214, 186, 240);
-    /* background-image: url('meetup-background.jpg'); */
+}
+
+.hero-emoji {
+    font-size: 5.5rem;
 }

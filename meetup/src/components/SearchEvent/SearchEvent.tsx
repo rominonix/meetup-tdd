@@ -24,22 +24,38 @@ const SearchEvent = () => {
   const [onlineEntered, setOnlineEntered] = useState("");
   const [locationEntered, setLocationEntered] = useState("");
   const [showEventList, setShowEventList] = useState(false);
+  // const mountedRef = useRef(true)
 
   const loadSearchEvent = async () => {
-    const res = await apiService.getSearch(
-      wordEntered,
-      locationEntered,
-      dateEntered,
-      onlineEntered
-    );
-    setSearchEvents(res);
+    try{
+
+      const response = await apiService.getEvent(
+        wordEntered,
+        locationEntered,
+        dateEntered,
+        onlineEntered
+      );
+  
+      setSearchEvents(response);
+    } catch(error){
+      console.log(error);
+      
+    }
   };
+
+  // useEffect(() => {
+  //   loadSearchEvent();
+  //   // return () => {
+  //   //   mountedRef.current = false
+  //   // }
+  // }, [searchEvents]);
 
   useEffect(() => {
     loadSearchEvent();
+    // return () => {
+    //   mountedRef.current = false
+    // }
   }, []);
-
-  useEffect(() => {}, [searchEvents]);
 
   return (
     <div className="search-event">
@@ -105,7 +121,13 @@ const SearchEvent = () => {
             date={event.date}
             time={event.time}
             availableSeats={event.availableSeats}
+            //@ts-ignore
+            city={event.location?.city}
+            //@ts-ignore
+            street={event.location?.street}
             eventImg={event.eventImg}
+            UserId={event.UserId}
+            digitalEvent={event.digitalEvent}
           />
         );
       })}

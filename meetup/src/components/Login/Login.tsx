@@ -4,17 +4,17 @@ import * as apiService from "../../api/index";
 import { useNavigate } from "react-router-dom";
 
 interface Login {
-  name: string;
+  // name: string;
   email: string;
   password: string;
 }
 
 interface Profile {
-  name: string;
+  // name: string;
   email: string;
   password: string;
-  eventAttend: string[] | null;
-  eventAttended: string[] | null;
+  eventAttend: string[];
+  eventAttended: string[];
 }
 
 const Login = () => {
@@ -25,22 +25,22 @@ const Login = () => {
   const [profile, setProfile] = useState<Profile[]>([]);
 
   const loadLogin = async () => {
-    const res = await apiService.postLogin(emailEntered, passwordEntered);
-    if ("user" in res) {
-      localStorage.setItem("email", res.user.email);
-      const response = await apiService.getProfile(res.user.email);
-      setProfile(response);
-      navigate("/");
-      window.location.reload();
-    } else {
-      console.log("failed login");
+    try {
+      const res = await apiService.postLogin(emailEntered, passwordEntered);
+      if ("user" in res) {
+        localStorage.setItem("email", res.user.email);
+        const response = await apiService.getProfile(res.user.email);
+        setProfile(response);
+        navigate("/");
+        window.location.reload();
+      }
+      setLogin(res);
+    } catch (error) {
+      console.log(error);
     }
-    setLogin(res);
   };
 
-  useEffect(() => {
-    loadLogin();
-  }, []);
+  useEffect(() => {}, [login]);
 
   return (
     <div className="login">
@@ -51,7 +51,7 @@ const Login = () => {
         onChange={(e) => setEmailEntered(e.target.value)}
       />
       <input
-      className="input-login"
+        className="input-login"
         type="text"
         placeholder="Password"
         onChange={(e) => setPasswordEntered(e.target.value)}

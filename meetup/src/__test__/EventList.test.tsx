@@ -10,16 +10,16 @@ configure({ adapter: new Adapter() })
 
 describe("EVENT LIST - Tester for EventList Component", () => {
   test("EVENT LIST - Test if EventList Component render without errors", () => {
-    render(<EventList id={""} title={""} description={""} date={""} time={""} availableSeats={0} eventImg={""}  />);
+    render(<EventList id={""} title={""} description={""} date={""} time={""} availableSeats={0} eventImg={""} UserId={""} digitalEvent={""} city={""} street={""}  />);
   });
 
   test("EVENT LIST - Test if className 'event-list' exist in EventList component", () => {
-    const wrapper = mount(<EventList id={""} title={""} description={""} date={""} time={""} availableSeats={0} eventImg={""}  />);
+    const wrapper = mount(<EventList id={""} title={""} description={""} date={""} time={""} availableSeats={0} eventImg={""} UserId={""} digitalEvent={""} city={""} street={""}  />);
     expect(wrapper.find(".event-list").length).toEqual(1);
   });
 
   test("EVENT LIST - Test if className 'img-thumbnail' exist in EventList component", () => {
-    const wrapper = mount(<EventList id={""} title={""} description={""} date={""} time={""} availableSeats={0} eventImg={""}  />);
+    const wrapper = mount(<EventList id={""} title={""} description={""} date={""} time={""} availableSeats={0} eventImg={""} UserId={""} digitalEvent={""} city={""} street={""}  />);
     expect(wrapper.find(".img-thumbnail").length).toEqual(1);
   });
 });

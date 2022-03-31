@@ -1,20 +1,38 @@
 import "./Navigation.style.css";
+import * as apiService from "../../api/index";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+interface UserName {
+  user: {
+    name: string;
+  };
+}
 
 const Navigation = () => {
   const [menu, setMenu] = useState(true);
+  const [profile, setProfile] = useState<UserName>();
+
+  const loadProfile = async () => {
+    let email: any = localStorage.getItem("email");
+    try{
+      const response = await apiService.getProfile(email);
+      setProfile(response);
+
+    } catch (error){
+      console.log(error);
+      
+    }
+  };
 
   const changeMenu = () => {
     if (localStorage.getItem("email") !== null) {
       setMenu(false);
-    } else {
-      console.log(`user not found`);
-    }
+    } 
   };
 
   useEffect(() => {
     changeMenu();
+    loadProfile();
   }, [menu]);
 
   return (
@@ -28,17 +46,22 @@ const Navigation = () => {
             <ul>
               <li>
                 <Link to="/login" className="link-sign-in">
-                  Sign In 🔒 
+                  Sign In 🔒
                 </Link>
               </li>
             </ul>
           ) : (
             <ul>
               <li>
-                <Link to="/profile" className="link-profile">
-                  My profile 🥳 
+                <Link to="/new-event" className="link-new-event">
+                  Create Event 📌
                 </Link>
               </li>
+             { profile ? ( <li>
+                <Link to="/profile" className="link-profile">
+                  {profile?.user.name} 🥳
+                </Link>
+              </li>) : ( <li> loading name</li> )}
             </ul>
           )}
         </nav>

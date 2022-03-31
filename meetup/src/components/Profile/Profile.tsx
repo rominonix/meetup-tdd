@@ -6,12 +6,10 @@ interface Profile {
   user: {
     name: string;
     email: string;
-    password: string;
     eventAttend: string[] | null;
     eventAttended: string[] | null;
   };
 }
-
 interface Event {
   event: {
     id: string;
@@ -20,10 +18,7 @@ interface Event {
     date: Date;
     time: string;
     location?: { street: string; city: string };
-    reviews: number[];
-    digitalEvent: string;
     availableSeats: number;
-    UserId: string;
     eventImg: string;
   };
 }
@@ -31,28 +26,28 @@ interface Event {
 const Profile = () => {
   const [profile, setProfile] = useState<Profile>();
   const [eventProfile, setEventProfile] = useState<Event[]>([]);
+  const [eventAttend, setEventAttend] = useState("");
+
   const navigate = useNavigate();
 
   const loadProfile = async () => {
     let email: any = localStorage.getItem("email");
-    const res = await apiService.getProfile(email);
+    try {
+      const res = await apiService.getProfile(email);
+      let eventId = res?.user.eventAttend;
+      let eventInProfile: any = [];
+      let results: number[] = await Promise.all(
+        eventId?.map(async (event: any) => {
+          const event_response = await apiService.getEventById(event);
+          eventInProfile.push(event_response);
+        })
+      );
 
-    let eventId = res?.user.eventAttend;
-  
-    let t: any = [];
-
-    var results: number[] = await Promise.all(
-      eventId?.map(async (event: any) => {
-        const event_response = await apiService.getEventById(event);
-
-        t.push(event_response);
-        console.log("This, in loop", t);
-      })
-    );
-    
-    setEventProfile(t);
-
-    setProfile(res);
+      setEventProfile(eventInProfile);
+      setProfile(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const logOut = () => {
@@ -61,63 +56,69 @@ const Profile = () => {
     window.location.reload();
   };
 
-  const getEventById = async () => {
- 
-    let eventId = profile?.user.eventAttend;
-    let t: any = [];
-    eventId?.map(async (event) => {
-      const res = await apiService.getEventById(event);
-      t.push(res.event);
-    
-    });
-    setEventProfile(t);
-    console.log(profile);
+  const notAttendFromProfile = async (eventId: string) => {
+    let email: any = localStorage.getItem("email");
+    try {
+      await apiService.notEventAttend(email, eventId);
+      const res = await apiService.getProfile(email);
+      setEventAttend(res?.user.eventAttend);
+      setEventProfile(res?.user.eventAttend);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-  
     loadProfile();
-  
   }, []);
-
-
-  useEffect(() => {
-    console.log("Use effect, empty 2", eventProfile);
-  }, [eventProfile]);
 
   return (
     <div className="profile">
       <div className="profile-details">
-        <div>
-          <h3>{profile?.user.name}</h3>
-          <h4>{profile?.user.email}</h4>
-        </div>
+        {profile ? (
+          <div>
+            <h3>{profile?.user.name}</h3>
+            <h4>{profile?.user.email}</h4>
+          </div>
+        ) : (
+          <p> loading user profile </p>
+        )}
         <div>
           <button className="log-out" type="button" onClick={logOut}>
             Log out
           </button>
         </div>
       </div>
-      <h3>Event attend</h3>
+      <h3>Events you are going to attend 🎉 </h3>
       <div className="event-attend">
-       
         {eventProfile.map((e) => {
           return (
             <div className="event-profile" key={e.event.id}>
-              <div className="event-profile">
-                <h4>{e.event.title}</h4>
-                <div className="date-time-profile">
-                  <p> 📅 {e.event.date}</p>
-                  <p> 🕣 {e.event.time}</p>
-                </div>
-                <div>
-                  <img className="profile-img" src={e.event.eventImg} alt="" />
-                </div>
+              <h4 className="title">{e.event.title}</h4>
+              <div className="date-time-profile">
+                <p> 📅 {e.event.date}</p>
+                <p> 🕣 {e.event.time}</p>
+                <button
+                  className="you-go-button"
+                  onClick={() => {
+                    notAttendFromProfile(e.event.id);
+                    window.location.reload();
+                  }}
+                >
+                  Not Attent
+                </button>
+              </div>
+              <div>
+                <img
+                  className="profile-img"
+                  src={e.event.eventImg}
+                  alt="profile image"
+                />
               </div>
             </div>
           );
         })}
-        </div>
+      </div>
     </div>
   );
 };
