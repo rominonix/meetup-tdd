@@ -10,7 +10,6 @@ interface Login {
 }
 
 interface Profile {
-  // name: string;
   email: string;
   password: string;
   eventAttend: string[];

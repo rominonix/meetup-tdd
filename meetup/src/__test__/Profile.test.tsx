@@ -16,16 +16,16 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe("PROFILE - Tester for Profile Component", () => {
-  test("PROFILE - Test if Profile Component ren without errors", () => {
+  test("PROFILE - Test if Profile Component ren without errors", async () => {
     render(<Profile />);
   });
 
-  test("PROFILE - Test if className 'profile' exist in Comment component", () => {
+  test("PROFILE - Test if className 'profile' exist in Comment component", async () => {
     const wrapper = mount(<Profile />);
     expect(wrapper.find(".profile").length).toEqual(1);
   });
 
-  test("PROFILE - Test if button tag exist in Profile component", () => {
+  test("PROFILE - Test if button tag exist in Profile component", async () => {
     const wrapper = mount(<Profile />);
     expect(wrapper.find("button").length).toEqual(1);
   });

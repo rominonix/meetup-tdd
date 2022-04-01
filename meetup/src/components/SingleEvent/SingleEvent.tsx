@@ -55,7 +55,6 @@ const SingleEvent = ({
     try {
       const eventId = id;
       const commentsInEvent = await apiService.getAllComments();
-      // console.log(commentsInEvent.data.comments);
       let commentEvent: any = [];
       commentsInEvent.data.comments.map((comment: any) => {
         if (comment.EventId === eventId) {
@@ -122,7 +121,7 @@ const SingleEvent = ({
 
           {errorMessage && (
             <div className="modal">
-              <div className="message">You comment are empty 😢! </div>
+              <div className="message">You comment are empty 😢!</div>
               <button className="close-button" onClick={() => setErrorMessage(false)}>X</button>
             </div>
           )}

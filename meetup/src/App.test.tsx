@@ -11,21 +11,21 @@ configure({ adapter: new Adapter() })
 
 
 describe("Tester for App Component", () => {
-  test("APP - Test if App Component render without errors", () => {
+  test("APP - Test if App Component render without errors", async () => {
     render(<App />);
   });
 
-  test("APP - Test if className 'App' ext", () => {
+  test("APP - Test if className 'App' ext", async () => {
     const wrapper = render(<App />);
     expect(wrapper.container.firstChild).toHaveClass('App');
   });
 
-  test("APP - Test if Navigation Component renders into App Component initially", () => {
+  test("APP - Test if Navigation Component renders into App Component initially", async () => {
     const wrapper = mount(<App />);
     const actual = wrapper.contains(<Navigation />);
     expect(actual).toBe(true);
   });
-  test("APP - Test if Footer Component renders into App Component initially", () => {
+  test("APP - Test if Footer Component renders into App Component initially", async () => {
     const wrapper = mount(<App />);
     const actual = wrapper.contains(<Footer />);
     expect(actual).toBe(true);

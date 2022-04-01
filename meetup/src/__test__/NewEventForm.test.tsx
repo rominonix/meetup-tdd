@@ -13,9 +13,20 @@ describe("NEW EVENT FORM - Tester for NewEventForm Component", () => {
     render(<NewEventForm />);
   });
 
+  test("NEW EVENT FORM - Test if NewEventForm Component has a h1 with 'Create a...' ", () => {
+    render(<NewEventForm />);
+    const title = screen.getByText(/Create/);
+    expect(title).toBeInTheDocument();
+  });
+
   test("NEW EVENT FORM - Test if input field exist in NewEventForm component", () => {
     const wrapper = mount(<NewEventForm />);
     expect(wrapper.find("input").length).toEqual(7);
+  });
+
+  test("NEW EVENT FORM - Test if label tag exist in NewEventForm component", () => {
+    const wrapper = mount(<NewEventForm />);
+    expect(wrapper.find("label").length).toEqual(9);
   });
 
   test("NEW EVENT FORM - Test if select tag exist in NewEventForm component", () => {

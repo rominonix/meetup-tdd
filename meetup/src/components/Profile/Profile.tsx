@@ -35,11 +35,10 @@ const Profile = () => {
 
   const loadEvents = async () => {
     let eventInProfile: any = [];
-    console.log("AA", profile?.user.eventAttend);
-    let aaaa: any = profile?.user.eventAttend;
+    let eventList: any = profile?.user.eventAttend;
     try {
       await Promise.all(
-        aaaa.map(async (event: any) => {
+        eventList.map(async (event: any) => {
           console.log(event);
           const event_response = await apiService.getEventById(event);
           eventInProfile.push(event_response);
@@ -57,38 +56,8 @@ const Profile = () => {
     try {
       let email: any = localStorage.getItem("email");
       const res = await apiService.getProfile(email);
-      console.log(res);
-
-      // let eventId = res?.user.eventAttend;
-      // let eventInProfile: any = [];
-
-      // const aa = async () => {
-      // let eventInProfile: any = [];
-
-      // eventId?.map(async (event: any) => {
-      //   const event_response = await apiService.getEventById(event);
-      //   eventInProfile.push(event_response);
-      // })
-      console.log("Nu uppdateras setProfile");
       setProfile(res);
-      // await loadEvents()
-      // setEventProfile(eventInProfile);
-
-      // return eventInProfile
-      // }
-      // let bb: any = await aa()
-      // console.log(bb)
-      // // let results: number[] = await Promise.all(
-      // // await Promise.all(
-      //   eventId?.map(async (event: any) => {
-      //     const event_response = await apiService.getEventById(event);
-      //     eventInProfile.push(event_response);
-      //   })
-      // // );
-      // console.log(eventInProfile);
-
-      // setEventProfile(eventInProfile);
-      // setEventProfile(bb);
+  
     } catch (error) {
       console.log(error);
     }
@@ -117,7 +86,7 @@ const Profile = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Nu körs useEffect loadEvents");
+    // console.log("Nu körs useEffect loadEvents");
 
     loadEvents();
   }, [profile, state, isLoaded]);
@@ -125,14 +94,10 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="profile-details">
-        {/* {profile ? ( */}
         <div>
           <h3>{profile?.user.name}</h3>
           <h4>{profile?.user.email}</h4>
         </div>
-        {/* ) : (
-          <p> loading user profile </p>
-        )} */}
         <div>
           <button className="log-out" type="button" onClick={logOut}>
             Log out
